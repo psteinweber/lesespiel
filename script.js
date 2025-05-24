@@ -402,7 +402,9 @@ function setupEmojiButtons() {
             '-webkit-focus-ring-color: transparent !important; ' +
             '-webkit-tap-highlight-color: rgba(0,0,0,0) !important; ' +
             'transform: none !important; ' +
-            '-webkit-transform: none !important;'
+            '-webkit-transform: none !important; ' +
+            'box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; ' +
+            'background: white !important;'
         );
         
         // Blur-Event erzwingen für iOS
@@ -413,9 +415,11 @@ function setupEmojiButtons() {
         button.className = '';
         setTimeout(() => {
             button.className = originalClasses;
-            // Zusätzlicher Transform-Reset nach Class-Reset
+            // Zusätzlicher Transform und Box-Shadow Reset nach Class-Reset
             button.style.transform = 'none';
             button.style.webkitTransform = 'none';
+            button.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            button.style.background = 'white';
         }, 10);
     });
 }
@@ -432,6 +436,8 @@ function startNewRound() {
     emojiButtons.forEach(button => {
         button.style.transform = 'none';
         button.style.webkitTransform = 'none';
+        button.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        button.style.background = 'white';
         button.classList.remove('correct', 'wrong');
     });
     
@@ -510,6 +516,10 @@ function handleWrongAnswer(button) {
             // Transform-Reset für iOS
             btn.style.transform = 'none';
             btn.style.webkitTransform = 'none';
+            
+            // Box-Shadow und Background Reset für iOS
+            btn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            btn.style.background = 'white';
         });
         hideFeeback();
     }, 1000);
