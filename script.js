@@ -380,11 +380,19 @@ function setupEmojiButtons() {
         button.removeEventListener('click', handleEmojiClick);
         button.addEventListener('click', handleEmojiClick);
         
-        // Klassen UND Inline-Styles zurücksetzen
+        // Vollständiges Reset aller Styles (besonders wichtig für Mobile)
         button.classList.remove('correct', 'wrong');
         button.style.pointerEvents = 'auto';
         button.style.transform = ''; // Tastatur-Effekte entfernen
         button.style.borderColor = ''; // Gelben Rand entfernen
+        button.style.backgroundColor = ''; // Background-Color zurücksetzen
+        button.style.boxShadow = ''; // Box-Shadow zurücksetzen
+        
+        // Mobile-spezifische Resets
+        button.style.webkitTransform = ''; // Webkit-Transform für iOS
+        button.style.border = ''; // Border komplett zurücksetzen
+        // Border-Style über CSS wieder setzen lassen
+        button.style.cssText = button.style.cssText.replace(/border[^;]*;?/g, '');
     });
 }
 
