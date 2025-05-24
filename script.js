@@ -400,7 +400,9 @@ function setupEmojiButtons() {
             'outline: none !important; ' +
             '-webkit-appearance: none !important; ' +
             '-webkit-focus-ring-color: transparent !important; ' +
-            '-webkit-tap-highlight-color: rgba(0,0,0,0) !important;'
+            '-webkit-tap-highlight-color: rgba(0,0,0,0) !important; ' +
+            'transform: none !important; ' +
+            '-webkit-transform: none !important;'
         );
         
         // Blur-Event erzwingen für iOS
@@ -411,6 +413,9 @@ function setupEmojiButtons() {
         button.className = '';
         setTimeout(() => {
             button.className = originalClasses;
+            // Zusätzlicher Transform-Reset nach Class-Reset
+            button.style.transform = 'none';
+            button.style.webkitTransform = 'none';
         }, 10);
     });
 }
@@ -422,6 +427,13 @@ function startNewRound() {
     currentWordPair = getRandomWord();
     currentWordElement.textContent = currentWordPair.word;
     currentWordElement.classList.remove('correct');
+    
+    // Zusätzlicher Reset aller Button-Transforms vor dem Setup
+    emojiButtons.forEach(button => {
+        button.style.transform = 'none';
+        button.style.webkitTransform = 'none';
+        button.classList.remove('correct', 'wrong');
+    });
     
     setupEmojiButtons();
     hideFeeback();
@@ -494,6 +506,10 @@ function handleWrongAnswer(button) {
             btn.style.outline = 'none !important';
             btn.style.webkitAppearance = 'none !important';
             btn.style.webkitFocusRingColor = 'transparent !important';
+            
+            // Transform-Reset für iOS
+            btn.style.transform = 'none';
+            btn.style.webkitTransform = 'none';
         });
         hideFeeback();
     }, 1000);
@@ -534,7 +550,7 @@ function startConfetti(isEndGame = false) {
     
     // Erfolgs- und Feier-Emojis für Konfetti
     const confettiEmojis = [
-        '❤️', '💖', '💕', '💗', '💓', '💝', // Herzen
+        '❤️', '💖', '💕', '💗', '💝', // Herzen
         '⭐', '🌟', '✨', '💫', '🌠', // Sterne
         '🎉', '🎊', '🥳', '🎈', '🎆', '🎇', // Party
         '😀', '😃', '😄', '😊', '🤗', '😍', // Glückliche Gesichter
