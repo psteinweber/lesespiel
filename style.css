@@ -139,6 +139,12 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    /* iOS Touch-Optimierungen */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .emoji-button:hover {

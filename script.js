@@ -684,7 +684,18 @@ document.addEventListener('keydown', (event) => {
 
 // Touch-Events für bessere Mobile-Erfahrung
 emojiButtons.forEach(button => {
+    // TouchStart für visuelles Feedback, aber ohne preventDefault
     button.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Verhindert Doppel-Events
+        // Kein preventDefault - das blockiert die Click-Events auf iOS!
+        button.style.transform = 'translateY(-2px)';
+    });
+    
+    // TouchEnd für Reset
+    button.addEventListener('touchend', (e) => {
+        setTimeout(() => {
+            if (button.style.pointerEvents !== 'none') {
+                button.style.transform = '';
+            }
+        }, 100);
     });
 }); 
