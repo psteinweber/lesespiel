@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Lesespiel 🌟</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <h1 class="game-title">🌟 Lesespiel 🌟</h1>
+            <div class="score-container">
+                <span class="score-label">Punkte:</span>
+                <span id="score" class="score-number">0</span>
+                <span class="score-label">/ 10</span>
+            </div>
+            <div class="keyboard-hint">
+                💡 Tipp: Tasten 1️⃣ 2️⃣ 3️⃣ 4️⃣ zum Spielen • ⏎ Enter für "Nochmal spielen"
+            </div>
+            
+            <!-- Konfetti Test Buttons -->
+          
+        </header>
+
+        <!-- Spielbereich -->
+        <main class="game-area">
+            <!-- Wort-Anzeige -->
+            <div class="word-container">
+                <div id="current-word" class="word-display">KATZE</div>
+            </div>
+
+            <!-- Emoji-Auswahlbereich -->
+            <div class="emoji-grid">
+                <button class="emoji-button" id="emoji-0" data-index="0">
+                    <span class="number-badge">1</span>
+                    <span class="emoji">🐱</span>
+                </button>
+                <button class="emoji-button" id="emoji-1" data-index="1">
+                    <span class="number-badge">2</span>
+                    <span class="emoji">🚗</span>
+                </button>
+                <button class="emoji-button" id="emoji-2" data-index="2">
+                    <span class="number-badge">3</span>
+                    <span class="emoji">🌳</span>
+                </button>
+                <button class="emoji-button" id="emoji-3" data-index="3">
+                    <span class="number-badge">4</span>
+                    <span class="emoji">⚽</span>
+                </button>
+            </div>
+
+            <!-- Feedback-Nachrichten -->
+            <div id="feedback-message" class="feedback-message hidden">
+                <span id="feedback-text">SUPER!</span>
+            </div>
+
+            <!-- Erfolgsmeldung -->
+            <div id="success-modal" class="success-modal hidden">
+                <div class="success-content">
+                    <h2>🎉 TOLL GEMACHT! 🎉</h2>
+                    <p>Du hast 10 Wörter richtig erkannt!</p>
+                    <button id="play-again" class="play-again-button">Nochmal spielen!</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Konfetti Container -->
+        <div id="confetti-container" class="confetti-container hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
