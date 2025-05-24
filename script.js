@@ -39,7 +39,7 @@ const wordEmojiPairs = [
     { word: "KEKSE", emoji: "🍪" },
     { word: "MILCH", emoji: "🥛" },
     { word: "TOAST", emoji: "🍞" },
-    { word: "KARROT", emoji: "🥕" },
+    { word: "KARROTE", emoji: "🥕" },
     { word: "TOMAT", emoji: "🍅" },
     
     // Tiere
@@ -209,7 +209,7 @@ const wordEmojiPairs = [
     { word: "MARIENKÄFER", emoji: "🐞" },
     { word: "SCHNECKE", emoji: "🐌" },
     { word: "AMEISE", emoji: "🐜" },
-    { word: "CHAMÄLEON", emoji: "🦎" },
+    { word: "SALAMANDER", emoji: "🦎" },
     { word: "SCHLANGE", emoji: "🐍" },
     { word: "SCHILDKRÖTE", emoji: "🐢" },
     { word: "OKTOPUS", emoji: "🐙" },
@@ -249,12 +249,9 @@ const wordEmojiPairs = [
     { word: "SALAT", emoji: "🥗" },
     { word: "SUPPE", emoji: "🍲" },
     { word: "BURRITO", emoji: "🌯" },
-    { word: "TACO", emoji: "🌮" },
-    { word: "PRETZEL", emoji: "🥨" },
+    { word: "BREZE", emoji: "🥨" },
     { word: "CROISSANT", emoji: "🥐" },
-    { word: "BAGUETTE", emoji: "🥖" },
-    { word: "PANCAKE", emoji: "🥞" },
-    { word: "WAFFLE", emoji: "🧇" }
+    { word: "BAGUETTE", emoji: "🥖" }
 ];
 
 // Alle verfügbaren Emojis für falsche Antworten
@@ -388,11 +385,33 @@ function setupEmojiButtons() {
         button.style.backgroundColor = ''; // Background-Color zurücksetzen
         button.style.boxShadow = ''; // Box-Shadow zurücksetzen
         
-        // Mobile-spezifische Resets
+        // iOS-spezifische Resets für persistente gelbe Ränder
         button.style.webkitTransform = ''; // Webkit-Transform für iOS
         button.style.border = ''; // Border komplett zurücksetzen
-        // Border-Style über CSS wieder setzen lassen
-        button.style.cssText = button.style.cssText.replace(/border[^;]*;?/g, '');
+        button.style.outline = 'none'; // Outline zurücksetzen
+        button.style.webkitAppearance = 'none'; // Webkit-Appearance
+        button.style.webkitFocusRingColor = 'transparent'; // Focus-Ring
+        button.style.webkitTapHighlightColor = 'rgba(0,0,0,0)'; // Tap-Highlight
+        
+        // Force-Reset durch inline styles
+        button.setAttribute('style', 
+            'pointer-events: auto; ' +
+            'border: 4px solid #87CEEB !important; ' +
+            'outline: none !important; ' +
+            '-webkit-appearance: none !important; ' +
+            '-webkit-focus-ring-color: transparent !important; ' +
+            '-webkit-tap-highlight-color: rgba(0,0,0,0) !important;'
+        );
+        
+        // Blur-Event erzwingen für iOS
+        button.blur();
+        
+        // CSS-Classes vollständig entfernen und wieder hinzufügen
+        const originalClasses = button.className;
+        button.className = '';
+        setTimeout(() => {
+            button.className = originalClasses;
+        }, 10);
     });
 }
 
@@ -468,6 +487,13 @@ function handleWrongAnswer(button) {
         emojiButtons.forEach(btn => {
             btn.style.pointerEvents = 'auto';
             btn.classList.remove('wrong');
+            
+            // iOS-spezifische Border-Resets
+            btn.blur(); // Focus entfernen
+            btn.style.border = '4px solid #87CEEB !important';
+            btn.style.outline = 'none !important';
+            btn.style.webkitAppearance = 'none !important';
+            btn.style.webkitFocusRingColor = 'transparent !important';
         });
         hideFeeback();
     }, 1000);
