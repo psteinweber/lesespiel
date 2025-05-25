@@ -251,10 +251,183 @@ const wordEmojiPairs = [
     { word: "BURRITO", emoji: "🌯" },
     { word: "BREZE", emoji: "🥨" },
     { word: "CROISSANT", emoji: "🥐" },
-    { word: "BAGUETTE", emoji: "🥖" }
+    { word: "WAFFLE", emoji: "🧇" }
 ];
 
-// Alle verfügbaren Emojis für falsche Antworten
+// Level 2: Assoziations-Paare (Wort → Assoziation)
+const associationPairs = [
+    // Adjektive - Eigenschaften
+    { word: "HEIß", emoji: "🔥" },
+    { word: "KALT", emoji: "❄️" },
+    { word: "SCHNELL", emoji: "⚡" },
+    { word: "LANGSAM", emoji: "🐌" },
+    { word: "GROß", emoji: "🦕" },
+    { word: "KLEIN", emoji: "🐜" },
+    { word: "LAUT", emoji: "📢" },
+    { word: "LEISE", emoji: "🤫" },
+    { word: "HELL", emoji: "💡" },
+    { word: "DUNKEL", emoji: "🌚" },
+    { word: "WEICH", emoji: "🧸" },
+    { word: "HART", emoji: "🪨" },
+    { word: "SÜSS", emoji: "🍯" },
+    { word: "SAUER", emoji: "🍋" },
+    { word: "STARK", emoji: "💪" },
+    { word: "SCHWER", emoji: "🏋️" },
+    { word: "LEICHT", emoji: "🪶" },
+    { word: "NASS", emoji: "💧" },
+    { word: "TROCKEN", emoji: "🏜️" },
+    { word: "GLATT", emoji: "🧊" },
+    
+    // Verben - Aktivitäten
+    { word: "FLIEGEN", emoji: "✈️" },
+    { word: "SCHWIMMEN", emoji: "🏊" },
+    { word: "LAUFEN", emoji: "🏃" },
+    { word: "ESSEN", emoji: "🍽️" },
+    { word: "TRINKEN", emoji: "🥤" },
+    { word: "SCHLAFEN", emoji: "🛏️" },
+    { word: "FAHREN", emoji: "🚗" },
+    { word: "SPIELEN", emoji: "🎮" },
+    { word: "LESEN", emoji: "📖" },
+    { word: "SCHREIBEN", emoji: "✏️" },
+    { word: "MALEN", emoji: "🎨" },
+    { word: "SINGEN", emoji: "🎤" },
+    { word: "TANZEN", emoji: "💃" },
+    { word: "KOCHEN", emoji: "🍳" },
+    { word: "BACKEN", emoji: "👨‍🍳" },
+    { word: "PUTZEN", emoji: "🧽" },
+    { word: "WASCHEN", emoji: "🧼" },
+    { word: "BAUEN", emoji: "🔨" },
+    { word: "ARBEITEN", emoji: "💼" },
+    { word: "LERNEN", emoji: "🎓" },
+    
+    // Ursache → Wirkung
+    { word: "FEUER", emoji: "🚒" },
+    { word: "REGEN", emoji: "☂️" },
+    { word: "UNFALL", emoji: "🚑" },
+    { word: "RÄUBER", emoji: "👮" },
+    { word: "KRANKHEIT", emoji: "💉" },
+    { word: "MÜLL", emoji: "🗑️" },
+    { word: "GEFAHR", emoji: "⚠️" },
+    { word: "HILFE", emoji: "🆘" },
+    { word: "NOTRUF", emoji: "📞" },
+    { word: "VERLETZT", emoji: "🩹" },
+    
+    // Problem → Lösung
+    { word: "DURST", emoji: "💧" },
+    { word: "HUNGER", emoji: "🍞" },
+    { word: "MÜDE", emoji: "😴" },
+    { word: "VERLOREN", emoji: "🧭" },
+    { word: "SCHMUTZIG", emoji: "🧼" },
+    { word: "KAPUTT", emoji: "🔧" },
+    { word: "FINSTER", emoji: "🔦" },
+    { word: "VERGESSEN", emoji: "📝" },
+    
+    // Aktivität → Ort/Objekt
+    { word: "EINKAUFEN", emoji: "🛒" },
+    { word: "SPORT", emoji: "🏆" },
+    { word: "URLAUB", emoji: "🏖️" },
+    { word: "SCHULE", emoji: "🎒" },
+    { word: "GEBURTSTAG", emoji: "🎂" },
+    { word: "WEIHNACHTEN", emoji: "🎄" },
+    { word: "PICKNICK", emoji: "🧺" },
+    { word: "CAMPING", emoji: "⛺" },
+    { word: "KINO", emoji: "🍿" },
+    { word: "KONZERT", emoji: "🎵" },
+    
+    // Eigenschaft → Beruf/Person
+    { word: "KRANKE", emoji: "👨‍⚕️" },
+    { word: "STUDENT", emoji: "👨‍🎓" },
+    { word: "KÜNSTLER", emoji: "🎭" },
+    { word: "MUSIKER", emoji: "🎸" },
+    { word: "BAUER", emoji: "🚜" },
+    { word: "PILOT", emoji: "👨‍✈️" },
+    { word: "RICHTER", emoji: "⚖️" },
+    
+    // Wetter → Reaktion
+    { word: "SONNIG", emoji: "🕶️" },
+    { word: "WINDIG", emoji: "🪁" },
+    { word: "STURM", emoji: "🌪️" },
+    { word: "GEWITTER", emoji: "⛈️" },
+    { word: "SCHNEE", emoji: "⛷️" },
+    { word: "NEBEL", emoji: "🌫️" },
+    
+    // Emotion → Symbol
+    { word: "GLÜCKLICH", emoji: "😊" },
+    { word: "TRAURIG", emoji: "😢" },
+    { word: "WÜTEND", emoji: "😡" },
+    { word: "ÄNGSTLICH", emoji: "😨" },
+    { word: "ÜBERRASCHT", emoji: "😲" },
+    { word: "LIEBE", emoji: "💕" },
+    { word: "FREUDE", emoji: "🎉" },
+    { word: "STOLZ", emoji: "🏅" },
+    
+    // Zeit → Symbol
+    { word: "MORGEN", emoji: "🌅" },
+    { word: "ABEND", emoji: "🌆" },
+    { word: "NACHT", emoji: "🌙" },
+    { word: "WOCHENENDE", emoji: "🎯" },
+    { word: "FERIEN", emoji: "🏝️" },
+    { word: "WINTER", emoji: "⛄" },
+    { word: "SOMMER", emoji: "🌻" },
+    { word: "FRÜHLING", emoji: "🌷" },
+    { word: "HERBST", emoji: "🍂" },
+    
+    // Gesundheit → Objekt
+    { word: "ZÄHNE", emoji: "🦷" },
+    { word: "HAARE", emoji: "💇" },
+    { word: "FITNESS", emoji: "🏃‍♀️" },
+    { word: "MEDIZIN", emoji: "💊" },
+    { word: "BRILLE", emoji: "👓" },
+    
+    // Technologie → Funktion
+    { word: "HANDY", emoji: "📱" },
+    { word: "INTERNET", emoji: "🌐" },
+    { word: "EMAIL", emoji: "📧" },
+    { word: "FOTO", emoji: "📸" },
+    { word: "MUSIK", emoji: "🎧" },
+    { word: "SPIEL", emoji: "🎲" },
+    { word: "FILM", emoji: "🎬" }
+];
+
+// Level 3: Buchstaben-Paare (Großbuchstabe → Kleinbuchstabe)
+const letterPairs = [
+    // Grundbuchstaben A-Z (ohne zu einfache: C, O, S, V, X)
+    { word: "A", emoji: "a" },
+    { word: "B", emoji: "b" },
+    { word: "D", emoji: "d" },
+    { word: "E", emoji: "e" },
+    { word: "F", emoji: "f" },
+    { word: "G", emoji: "g" },
+    { word: "H", emoji: "h" },
+    { word: "I", emoji: "i" },
+    { word: "J", emoji: "j" },
+    { word: "K", emoji: "k" },
+    { word: "L", emoji: "l" },
+    { word: "M", emoji: "m" },
+    { word: "N", emoji: "n" },
+    { word: "P", emoji: "p" },
+    { word: "Q", emoji: "q" },
+    { word: "R", emoji: "r" },
+    { word: "T", emoji: "t" },
+    { word: "U", emoji: "u" },
+    { word: "W", emoji: "w" },
+    { word: "Y", emoji: "y" },
+    { word: "Z", emoji: "z" },
+    
+    // Deutsche Umlaute (ohne ß - zu einfach)
+    { word: "Ä", emoji: "ä" },
+    { word: "Ö", emoji: "ö" },
+    { word: "Ü", emoji: "ü" }
+];
+
+// Alle Kleinbuchstaben für falsche Antworten in Level 3
+const allLowercase = [
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
+    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+    "ä", "ö", "ü"
+];
+
+// Alle verfügbaren Emojis für falsche Antworten (Level 1 & 2)
 const allEmojis = [
     // Grundlegende Emojis
     "🐱", "🐶", "🚗", "⚽", "🌳", "🏠", "☀️", "🌙", "⭐", "❤️",
@@ -316,6 +489,7 @@ const allEmojis = [
 ];
 
 // Spielzustand
+let currentLevel = 1;
 let currentWordPair = null;
 let correctEmojiIndex = -1;
 let score = 0;
@@ -332,16 +506,124 @@ const successModal = document.getElementById('success-modal');
 const playAgainButton = document.getElementById('play-again');
 const confettiContainer = document.getElementById('confetti-container');
 
-// Zufällige Wortauswahl
-function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * wordEmojiPairs.length);
-    return wordEmojiPairs[randomIndex];
+// Level-Switcher Elemente
+const levelButtons = document.querySelectorAll('.level-button');
+const level1Button = document.getElementById('level-1-btn');
+const level2Button = document.getElementById('level-2-btn');
+
+// Level-spezifische Konfiguration
+const levelConfig = {
+    1: {
+        name: "Wort → Emoji",
+        wordPairs: wordEmojiPairs,
+        setupFunction: setupLevel1,
+        clickHandler: handleLevel1Click
+    },
+    2: {
+        name: "Assoziation",
+        wordPairs: associationPairs,
+        setupFunction: setupLevel2,
+        clickHandler: handleLevel2Click
+    },
+    3: {
+        name: "Buchstaben",
+        wordPairs: letterPairs,
+        setupFunction: setupLevel3,
+        clickHandler: handleLevel3Click
+    }
+};
+
+// Level-System Funktionen
+function switchLevel(newLevel) {
+    if (newLevel === currentLevel) return;
+    
+    // Aktuelles Spiel stoppen
+    gameInProgress = false;
+    stopConfetti();
+    hideSuccessModal();
+    hideFeeback();
+    
+    // Level wechseln
+    currentLevel = newLevel;
+    
+    // UI aktualisieren
+    levelButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (parseInt(btn.dataset.level) === currentLevel) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Level-spezifische CSS-Klassen
+    updateLevelClasses();
+    
+    // Spiel für neues Level zurücksetzen
+    resetGame();
 }
 
-// Zufällige Emojis für falsche Antworten generieren
+// Level-spezifische CSS-Klassen aktualisieren
+function updateLevelClasses() {
+    const gameContainer = document.querySelector('.game-container');
+    
+    // Alle Level-Klassen entfernen
+    gameContainer.classList.remove('level-1', 'level-2', 'level-3');
+    
+    // Aktuelle Level-Klasse hinzufügen
+    gameContainer.classList.add(`level-${currentLevel}`);
+}
+
+// Level 1 Setup (aktuelles Spiel)
+function setupLevel1() {
+    setupEmojiButtons();
+}
+
+// Level 2 Setup (Assoziations-Spiel)
+function setupLevel2() {
+    setupEmojiButtons(); // Gleiche Button-Logik wie Level 1
+}
+
+// Level 3 Setup (Buchstaben-Spiel)
+function setupLevel3() {
+    setupEmojiButtons(); // Gleiche Button-Logik wie Level 1
+}
+
+// Level 1 Click Handler (aktuelles Spiel)
+function handleLevel1Click(event) {
+    return handleLevel1EmojiClick(event); // Korrigierter Handler
+}
+
+// Level 2 Click Handler (Assoziations-Spiel)
+function handleLevel2Click(event) {
+    return handleLevel1EmojiClick(event); // Gleiche Klick-Logik wie Level 1
+}
+
+// Level 3 Click Handler (Buchstaben-Spiel)
+function handleLevel3Click(event) {
+    return handleLevel1EmojiClick(event); // Gleiche Klick-Logik wie Level 1
+}
+
+// Zufällige Wortauswahl
+function getRandomWord() {
+    const currentWordPairs = levelConfig[currentLevel].wordPairs;
+    if (currentWordPairs.length === 0) return null;
+    
+    const randomIndex = Math.floor(Math.random() * currentWordPairs.length);
+    return currentWordPairs[randomIndex];
+}
+
+// Zufällige Emojis/Buchstaben für falsche Antworten generieren
 function getRandomEmojis(excludeEmoji, count = 3) {
-    const filteredEmojis = allEmojis.filter(emoji => emoji !== excludeEmoji);
-    const shuffled = [...filteredEmojis].sort(() => 0.5 - Math.random());
+    let sourceArray;
+    
+    // Je nach Level verschiedene Quellen für falsche Antworten
+    if (currentLevel === 3) {
+        sourceArray = allLowercase;
+    } else {
+        sourceArray = allEmojis;
+    }
+    
+    const filteredItems = sourceArray.filter(item => item !== excludeEmoji);
+    const shuffled = [...filteredItems].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
 }
 
@@ -397,6 +679,7 @@ function setupEmojiButtons() {
         button.setAttribute('style', 
             'pointer-events: auto; ' +
             'border: 4px solid #87CEEB !important; ' +
+            'border-radius: 20px !important; ' +
             'outline: none !important; ' +
             '-webkit-appearance: none !important; ' +
             '-webkit-focus-ring-color: transparent !important; ' +
@@ -429,6 +712,8 @@ function startNewRound() {
     if (!gameInProgress) return;
     
     currentWordPair = getRandomWord();
+    if (!currentWordPair) return; // Falls keine Wörter für aktuelles Level
+    
     currentWordElement.textContent = currentWordPair.word;
     currentWordElement.classList.remove('correct');
     
@@ -441,7 +726,8 @@ function startNewRound() {
         button.classList.remove('correct', 'wrong');
     });
     
-    setupEmojiButtons();
+    // Level-spezifisches Setup
+    levelConfig[currentLevel].setupFunction();
     hideFeeback();
 }
 
@@ -449,6 +735,12 @@ function startNewRound() {
 function handleEmojiClick(event) {
     if (!gameInProgress) return;
     
+    // Level-spezifischen Click Handler verwenden
+    return levelConfig[currentLevel].clickHandler(event);
+}
+
+// Original Level 1 Click Handler (ehemals handleEmojiClick)
+function handleLevel1EmojiClick(event) {
     const clickedButton = event.currentTarget;
     const clickedIndex = parseInt(clickedButton.getAttribute('data-index'));
     
@@ -665,6 +957,14 @@ function resetGame() {
 // Event-Listener hinzufügen
 playAgainButton.addEventListener('click', resetGame);
 
+// Level-Switcher Event-Listener
+levelButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const newLevel = parseInt(e.currentTarget.dataset.level);
+        switchLevel(newLevel);
+    });
+});
+
 // Konfetti Test Buttons (nur wenn sie existieren)
 const testConfettiButton = document.getElementById('test-confetti');
 const testMegaConfettiButton = document.getElementById('test-mega-confetti');
@@ -683,6 +983,19 @@ if (testMegaConfettiButton) {
 
 // Spiel starten
 document.addEventListener('DOMContentLoaded', () => {
+    // Level 1 als Standard aktivieren
+    currentLevel = 1;
+    levelButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (parseInt(btn.dataset.level) === currentLevel) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Level-spezifische CSS-Klassen setzen
+    updateLevelClasses();
+    
+    // Erstes Spiel starten
     startNewRound();
 });
 

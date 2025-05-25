@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Comic Sans MS', 'Arial Black', sans-serif;
+    font-family: 'Playwrite DE Grund', Arial, sans-serif;
     background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
     min-height: 100vh;
     overflow-x: hidden;
@@ -189,6 +189,21 @@ body {
 .emoji {
     font-size: 5rem;
     line-height: 1;
+}
+
+/* Buchstaben-Anzeige für Level 3 */
+.level-3 .word-display {
+    font-family: 'Playwrite DE Grund', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+}
+
+.level-3 .emoji {
+    font-size: 4rem;
+    font-family: 'Playwrite DE Grund', Arial, sans-serif;
+    font-weight: bold;
+    color: #2C3E50;
 }
 
 .number-badge {
@@ -387,6 +402,25 @@ body {
         font-size: 2rem;
     }
     
+    .level-switcher {
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .level-button {
+        min-width: 90px;
+        max-width: 110px;
+        padding: 10px 15px;
+    }
+    
+    .level-number {
+        font-size: 1.3rem;
+    }
+    
+    .level-name {
+        font-size: 0.8rem;
+    }
+    
     .confetti-test-buttons {
         flex-direction: column;
         align-items: center;
@@ -449,6 +483,25 @@ body {
         font-size: 1.5rem;
     }
     
+    .level-switcher {
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .level-button {
+        min-width: 75px;
+        max-width: 90px;
+        padding: 8px 12px;
+    }
+    
+    .level-number {
+        font-size: 1.2rem;
+    }
+    
+    .level-name {
+        font-size: 0.75rem;
+    }
+    
     .test-button {
         font-size: 0.8rem;
         padding: 6px 12px;
@@ -501,7 +554,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: 'Comic Sans MS', 'Arial Black', sans-serif;
+    font-family: 'Playwrite DE Grund', Arial, sans-serif;
 }
 
 .test-button:hover {
@@ -523,4 +576,78 @@ body {
 .test-button.mega:hover {
     border-color: #00FF7F;
     box-shadow: 0 6px 12px rgba(147, 112, 219, 0.4);
+}
+
+/* Level Switcher */
+.level-switcher {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.level-button {
+    background: linear-gradient(135deg, #E8F4FD 0%, #B6E2FF 100%);
+    border: 3px solid #87CEEB;
+    border-radius: 20px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Playwrite DE Grund', Arial, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 110px;
+    flex: 1;
+    max-width: 140px;
+}
+
+.level-button:hover {
+    transform: translateY(-3px);
+    border-color: #FFD700;
+    background: linear-gradient(135deg, #FFF8DC 0%, #FFE4B5 100%);
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.3);
+}
+
+.level-button.active {
+    background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
+    border-color: #FFD700;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(50, 205, 50, 0.4);
+}
+
+.level-button.active:hover {
+    background: linear-gradient(135deg, #228B22 0%, #006400 100%);
+}
+
+.level-button.disabled {
+    background: linear-gradient(135deg, #D3D3D3 0%, #A9A9A9 100%);
+    border-color: #808080;
+    color: #696969;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.level-button.disabled:hover {
+    transform: none;
+    background: linear-gradient(135deg, #D3D3D3 0%, #A9A9A9 100%);
+    border-color: #808080;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.level-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.level-name {
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
 } 

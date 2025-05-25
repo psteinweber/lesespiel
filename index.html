@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌟 Lesespiel 🌟</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,6 +14,23 @@
         <!-- Header -->
         <header class="game-header">
             <h1 class="game-title">🌟 Lesespiel 🌟</h1>
+            
+            <!-- Level Switcher -->
+            <div class="level-switcher">
+                <button id="level-1-btn" class="level-button active" data-level="1">
+                    <span class="level-number">1</span>
+                    <span class="level-name">Wort → Emoji</span>
+                </button>
+                <button id="level-2-btn" class="level-button" data-level="2">
+                    <span class="level-number">2</span>
+                    <span class="level-name">Assoziation</span>
+                </button>
+                <button id="level-3-btn" class="level-button" data-level="3">
+                    <span class="level-number">3</span>
+                    <span class="level-name">Buchstaben</span>
+                </button>
+            </div>
+            
             <div class="score-container">
                 <span class="score-label">Punkte:</span>
                 <span id="score" class="score-number">0</span>
